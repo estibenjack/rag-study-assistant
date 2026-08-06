@@ -35,7 +35,11 @@ def chunk_documents(
     chunk_size: int = 500,
     overlap: int = 100
 ) -> list[dict[str]]:
-    """Split document pages into chunks while preserving metadata."""
+    """Split document pages into chunks while preserving metadata.
+
+    Each output chunk retains its original source filename and page number
+    to support retrieval and citation later in the RAG pipeline.
+    """
     chunks = []
 
     for document in documents:

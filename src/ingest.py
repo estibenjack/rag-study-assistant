@@ -3,7 +3,11 @@ import pymupdf
 
 
 def load_pdf(file_path: Path) -> list[dict]:
-    """Extract text and metadata from each non-empty page of a PDF."""
+    """Extract text and metadata from each non-empty page of a PDF.
+
+    Returns one dictionary per page containing the page text, page number,
+    and source filename.
+    """
     pages = []
 
     pdf = pymupdf.open(file_path)
@@ -26,7 +30,10 @@ def load_pdf(file_path: Path) -> list[dict]:
 
 
 def load_documents(directory: str | Path) -> list[dict]:
-    """Load all PDF files from a directory."""
+    """Load all PDF files from a directory.
+
+    Returns a single flat list containing the page records from every PDF.
+    """
     directory = Path(directory)
     documents = []
 
